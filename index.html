@@ -7,7 +7,7 @@
         </title>
         <script>
             function fetchSiteData(url, output) {
-                var x = fetch(url, { mode: "no-cors" }).then(response => response.text()).then(text => {
+                var x = fetch(url).then(response => response.text()).then(text => {
                     document.getElementById(output).innerHTML = text;
                 })
             }
@@ -30,7 +30,7 @@
 
     <body>
         <button
-            onclick="getReleases('https://github.com/TechWorldInc/WebOSv3/releases','temp','output');">Fetch</button>
+            onclick="getReleases('/TechWorldInc/WebOSv3/releases','temp','output');">Fetch</button>
         <div id="output"></div>
         <div id="temp" style="visibility: hidden;"></div>
     </body>
