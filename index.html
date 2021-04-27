@@ -2,37 +2,19 @@
 <html>
 
     <head>
-        <title>
-            Fetch Test 001
-        </title>
         <script>
-            function fetchSiteData(url, output) {
-                var x = fetch(url).then(response => response.text()).then(text => {
-                    document.getElementById(output).innerHTML = text;
-                })
-            }
-
-            function getReleases(url, temp, output) {
-                var classStr = "Box Box--condensed mt-3";
-                fetchSiteData(url, temp);
-                setTimeout(() => {
-                    document.getElementById(output).innerHTML = document.getElementsByClassName(classStr)[0].innerHTML;
-                    document.getElementById(temp).innerHTML = "";
-                    for (var i = 0; i < document.getElementsByTagName("a").length; i++) {
-                        if (document.getElementsByTagName("a")[i].className.includes("d-flex")) {
-                            document.getElementsByTagName("a")[i].href = document.getElementsByTagName("a")[i].href.replace("file:///C:/", "https://www.github.com/")
-                        }
-                    }
-                }, 1000);
+            function getReleases(url, outid, tmpid) {
+                document.getElementById(tmpid).href = url;
             }
         </script>
     </head>
 
     <body>
         <button
-            onclick="getReleases('https://www.github.com/TechWorldInc/WebOSv3/releases','temp','output');">Fetch</button>
+            onclick="getReleases('https://github.com/itsmattkc/LEGOIslandRebuilder/releases/','output', 'tmpIframe')">fetch</button>
         <div id="output"></div>
-        <div id="temp" style="visibility: hidden;"></div>
+        <iframe id="tmpIframe" style="visibility: hidden;width:0px;height:0px;display:none;opacity: 0;"
+            src="http://info.cern.ch/" />
     </body>
 
 </html>
